@@ -1,10 +1,16 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'anchan828/save-to-file'
+description: 'Save text as file'
+author: 'anchan828'
 inputs:
-  myInput:              # change this
-    description: 'input description here'
-    default: 'default value if applicable'
+  text:
+    description: 'text'
+    required: true
+  file:
+    description: 'file path'
+    required: true
+  encoding:
+    description: 'text encoding. default is utf8'
+    default: 'utf8'
 runs:
   using: 'node12'
   main: 'lib/main.js'
