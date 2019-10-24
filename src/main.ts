@@ -1,16 +1,13 @@
-import * as core from '@actions/core';
-import {wait} from './wait'
+import * as core from "@actions/core";
+import { save } from "./save";
 
 async function run() {
   try {
-    const ms = core.getInput('milliseconds');
-    console.log(`Waiting ${ms} milliseconds ...`)
+    const text = core.getInput("text");
+    const file = core.getInput("file", { required: true });
+    const encoding = core.getInput("encoding");
 
-    core.debug((new Date()).toTimeString())
-    await wait(parseInt(ms, 10));
-    core.debug((new Date()).toTimeString())
-
-    core.setOutput('time', new Date().toTimeString());
+    await save(text, file, encoding);
   } catch (error) {
     core.setFailed(error.message);
   }
