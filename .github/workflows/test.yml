@@ -25,3 +25,10 @@ jobs:
         encoding: "base64"
     - run: cat test1.txt
     - run: cat test2.txt
+
+    - name: Secret
+      uses: ./
+      with: 
+        text: ${{ secrets.SECRET_KEY }}
+        file: "$HOME/.secret/secret"
+    - run: cat $HOME/.secret/secret
