@@ -26,11 +26,9 @@ jobs:
     - run: cat test1.txt
     - run: cat test2.txt
 
-    # - name: Secret
-    #   uses: ./
-    #   with: 
-    #     text: ${{ secrets.SECRET_KEY }}
-    #     file: "$HOME/.test/test"
-    - run: echo $CHECK
-      env:
-        CHECK: ${{ toJSON(runner) }}
+    - name: Secret
+      uses: ./
+      with: 
+        text: ${{ secrets.SECRET_KEY }}
+        file: "~/.test/test"
+    - run: cat $HOME/.test/test
