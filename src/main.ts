@@ -8,7 +8,7 @@ async function run() {
     const encoding = core.getInput("encoding");
 
     await save(text, file, encoding);
-    console.log(`Saved: ${file}`);
+    core.debug(`Saved: ${file}`);
   } catch (error) {
     core.setFailed(error.message);
   }
