@@ -11,10 +11,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-
     - run: npm ci
     - run: npm run build
     - run: npm test
     - uses: ./
       with: 
-        milliseconds: 1000
+        text: "test"
+        file: "test1.txt"
+    - uses: ./
+      with: 
+        text: "dGVzdA=="
+        file: "test2.txt"
+        encoding: "base64"
+    - run: cat test1.txt
+    - run: cat test2.txt
