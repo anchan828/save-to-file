@@ -2,7 +2,7 @@ import * as core from "@actions/core";
 import { dirname, join } from "path";
 import { existsSync, mkdirSync, writeFileSync } from "fs";
 
-export async function save(text: string, file: string, encoding: string) {
+export async function save(text: string, file: string, encoding: BufferEncoding) {
   if (file[0] === "~" || file[0] === "$HOME") {
     file = join(process.env.HOME!, file.slice(1));
   }
@@ -14,5 +14,5 @@ export async function save(text: string, file: string, encoding: string) {
     core.debug(`Created directory: ${dir}`);
   }
 
-  writeFileSync(file, text, encoding);
+  writeFileSync(file, text, { encoding });
 }
